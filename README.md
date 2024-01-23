@@ -1,18 +1,43 @@
-## 전력 요금 계산하기
+## 전력 요금 계산하기 (초급)
+전력 요금 = 기본요금 + 전력량 요금 + 기후환경 요금 + 전력기반기금
+- `기후환경 요금` : 기후환경요금단가 * 사용전력량
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+#### 기본요금 요금
+- `200kWh이하 사용` : 910원
+- `201~400kWh 사용` : 1,600원
+- `400kWh 초과 사용` : 7,300원
 
-## Folder Structure
+#### 전력량 요금
+- `처음 200kWh 까지` : 120원
+- `다음 200kWh 까지` : 214.6원
+- `400kWh 초과` : 307.3원
 
-The workspace contains two folders by default, where:
+#### 기후환경 요금
+- `사용량kWh * 9원`
 
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
+#### 전력발전기금
+- `전기요금 * 3.7%`
 
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
 
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
+### 계산 예시 (450kWh)
+1. 기본요금 : 7,300원 (3단계 단가)
+2. 전력량요금 : 82,285원 (1~3단계 요금의 합계, 원미만절사)
+- 1단계 : 200kWh × 120.0원 = 24,000원
+- 2단계 : 200kWh × 214.6원 = 42,920원
+- 3단계 : 50kWh × 307.3원 = 15,365원
+3. 기후환경요금 : 450kWh × 9원 = 4,050원
+4. 전기요금계 : 93,635원 = 7,300원(1) + 82,285원(2) + 4,050원(3)
+5. 부가가치세 : 93,635원(4) × 10% = 9,364원 (원미만 반올림)
+6. 전력기반기금 : 93,635원(4) × 3.7% = 3,460원 (10원미만절사)
+7. 청구금액 : 93,635원(4) + 9,364원원(5) + 3,460원(6) = 106,450원 (10원미만절사)
 
-## Dependency Management
+### 입/출력 예시
+사용량을 입력하세요. > 450 <br/>
 
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+기본요금 : 7,300 원 (3단계 단가)<br/>
+전력량요금 : 82,285 원<br/>
+기후환경요금 : 4,050 원<br/>
+전기요금계 : 93,635 원<br/>
+부가가치세 : 9,364 원 (원미만 반올림)<br/>
+전력기반기금 : 3,460원 (10원미만절사)<br/>
+청구금액 : 106,450원 (10원미만절사)<br/>
